@@ -10,12 +10,11 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
+
     <div class="hero-body">
         <div class="container">
             <h1 class="title">
@@ -26,14 +25,23 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-6 col-md-4">
-                    <input id="cityName" type="text" placeholder="search for a city">
-                    <button id="searchBtn" type="button" i class="fas fa-search"></button>
-                    </input>
-                    <div id="searchHistory"> </div>
+                <div class="card">
+                    <div class="col-4">
+                        <input id="cityName" type="text" placeholder="search for a city">
+                        <button id="searchBtn" type="button" i class="fas fa-search"> Search</button>
+                        </input>
+                        <div class="card-subtitle mb-2 text-muted" style="width: 12rem;">
+                            <ul class="list-group list-group-flush">
+                                <li id="sList"></li>
+                            </ul>
+                        </div>
+                        <!-- <div id="sList"> </div> -->
+                    </div>
+
                 </div>
 
-                <div class="col-12 col-md-8">
+
+                <div class="col-6">
                     <div class="forecastToday">
                         <h3>TODAY</h3>
                         <p id="now-date"></p>
@@ -41,35 +49,30 @@
                         <p id="current-humidity"></p>
                     </div>
 
-                    <div class="5day-forcast">
+                    <div class="FiveDaysForecast">
                         <h3>5-DAYS</h3>
-                        <div id="1"></div>
-                        <div id="2"></div>
-                        <div id="3"></div>
-                        <div id="4"></div>
-                        <div id="5"></div>
+                        <div class="row" id="fiveDays">
+                            <div id="1"></div>
+                            <div id="2"></div>
+                            <div id="3"></div>
+                            <div id="4"></div>
+                            <div id="5"></div>
+                        </div>
                     </div>
                 </div>
+
             </div>
+        </div>
         </div>
     </main>
 
-    <div style="height: 150px;">
-
-    </div>
-
-
-
+    <div style="height: 150px;"> </div>
 
 
     <footer class="page-footer font-small blue pt-4">
-
         <div class="container-fluid text-center text-md-center">
-
-
             <h5 class="text-uppercase">Thank you!</h5>
             <p>Please check websites below for more information!</p>
-
             <ul class="list-unstyled">
                 <li>
                     <a
