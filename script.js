@@ -68,9 +68,6 @@ function clearWeather() {
     $("#fiveDayDate").empty();
     $("#uv").empty();
     $(".day").empty();
-
-
-
 }
 
 
@@ -83,7 +80,6 @@ $("#searchBtn").on("click", function () {
     searchCityWeather(cityName);
     localStorage.setItem("searchedHistory",cityName);
     $("#sList").prepend("<p>" + cityName.toUpperCase() + "</p>");
-
 
 })
 
