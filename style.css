@@ -21,23 +21,25 @@ body {
 }
 
 .card {
+    /* height: 100vh; */
     padding: 10px;
     opacity: 0.85;
-    width: 40%;
+    width: 30%;
 }
 
+
+
 #searchBtn {
-    margin-left: -20px;
+
     padding: 5px;
     margin-bottom: 25px;
     width: 8rem;
 }
 
 .container {
-    margin-left: 10px;
-    margin-right: 10px;;
+
     padding: 0px;
-    max-width: 1400px;
+    /* max-width: 1400px; */
 }
 
 .row {
@@ -46,21 +48,29 @@ body {
 }
 
 #cityName {
-    margin-left: -20px;
-    margin-bottom: 10px;
+    position: relative;
+
     width: 8rem;
+    padding-left: 10px;
+    width: 100%
 }
+
 
 .forecastToday{
-    padding: 5px;
-    background-color: rgba(102, 100, 100, 0.404);
 
+    padding: 10px;
+    background-color: rgba(102, 100, 100, 0.404);
+    width: 70%;
+    text-align: center;
 }
 
 
-#fiveDays.row {
+#fiveDays {
     padding: 10px;
     background-color: rgba(67, 103, 149, 0.527);
+    width: 100%;
+
+
 }
 
 footer {

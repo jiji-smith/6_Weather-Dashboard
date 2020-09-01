@@ -19,8 +19,8 @@ function searchCityWeather(cityName) {
             var now = moment().format("MM/DD/YYYY");
             $("#now-date").append(now);
 
-            clearWeather();
-            // showHistory();
+            // clearWeather();
+
 
             // print to the dom/html all the forecast data
 
@@ -45,10 +45,13 @@ function searchCityWeather(cityName) {
                 console.log(icon);
                 var iconUrl = "http://openweathermap.org/img/wn/" + icon + ".png";
 
-                // create the icons and show on the page
+                // create date
                 $("#" + i).append(p);
+                // create img
                 $("#" + i).append("<img src=" + iconUrl + ">");
+                // create temp
                 $("#" + i).append("<p id=fiveDayTemp>" + _5dayTemp + "F </p>")
+                // creaate humidity
                 $("#" + i).append("<p id=fiveDayHumidity>" + _5dayHumidity + "%</p>")
 
             }
@@ -64,18 +67,23 @@ function clearWeather() {
     $("#fiveDayHumidity").empty();
     $("#fiveDayDate").empty();
     $("#uv").empty();
+    $(".day").empty();
+
+
 
 }
 
 
-
+// show the history
 $("#searchBtn").on("click", function () {
     event.preventDefault();
+    clearWeather();
     cityName = $("#cityName").val().trim();
     console.log(cityName)
     searchCityWeather(cityName);
     localStorage.setItem("searchedHistory",cityName);
     $("#sList").prepend("<p>" + cityName.toUpperCase() + "</p>");
+
 
 })
 
