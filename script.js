@@ -1,8 +1,10 @@
 // 40961afd2ab5d2926debb895b0f079e9 - API keys
 
 
-var cityName = "Austin";
 
+var cityName = localStorage.getItem("lastCity") || "Austin"; // one string value, || > use default value
+var searchedHistory = JSON.parse(localStorage.getItem("searchedHistory")) || []; // I dont wanna see 'null' so put || []
+console.log(searchedHistory);
 
 function searchCityWeather(cityName) {
 
@@ -10,6 +12,12 @@ function searchCityWeather(cityName) {
         // console.log(todaysData);
         var lat = todaysData.coord.lat;
         var lon = todaysData.coord.lon;
+        clearWeather();
+        localStorage.setItem("lastCity", cityName.toLowerCase()); // I wanna store only valid city name
+        if (searchedHistory.indexOf(cityName.toLowerCase()) === -1) { searchedHistory.push(cityName.toLowerCase()) };
+        localStorage.setItem("searchedHistory", JSON.stringify(searchedHistory));
+        console.log(searchedHistory);
+        makeCityList();
 
         $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=40961afd2ab5d2926debb895b0f079e9`, function (forecastData) {
             // update our todays forecast Card with current data
@@ -19,12 +27,10 @@ function searchCityWeather(cityName) {
             var now = moment().format("MM/DD/YYYY");
             $("#now-date").append(now);
 
-            // clearWeather();
-
 
             // print to the dom/html all the forecast data
 
-            $("#now-date").text(" \" " + cityName.toUpperCase()+ " \" " + now);
+            $("#now-date").text(" \" " + cityName.toUpperCase() + " \" " + now);
             $("#current-temp").text("Temperature: " + temp + "F");
             $("#current-humidity").text("Humidity: " + humidity + "%");
 
@@ -59,6 +65,8 @@ function searchCityWeather(cityName) {
     });
 }
 
+
+
 function clearWeather() {
     $("#now-date").empty();
     $("#current-temp").empty();
@@ -68,19 +76,35 @@ function clearWeather() {
     $("#fiveDayDate").empty();
     $("#uv").empty();
     $(".day").empty();
+
 }
+
+
+
+function makeCityList() {
+    $("#sList").empty();
+    for (i = 0; i < searchedHistory.length; i++) {
+        $("#sList").prepend("<li><p>" + searchedHistory[i].toUpperCase() + "</p></li>");
+    }
+    $("#sList li").on("click", function () {
+
+        var recentCity = $(this).text();
+        searchCityWeather(recentCity);
+    });
+}
+
+searchCityWeather(cityName);
 
 
 // show the history
 $("#searchBtn").on("click", function () {
     event.preventDefault();
-    clearWeather();
+
     cityName = $("#cityName").val().trim();
     console.log(cityName)
     searchCityWeather(cityName);
-    localStorage.setItem("searchedHistory",cityName);
-    $("#sList").prepend("<p>" + cityName.toUpperCase() + "</p>");
 
 })
 
 
+// overflow
